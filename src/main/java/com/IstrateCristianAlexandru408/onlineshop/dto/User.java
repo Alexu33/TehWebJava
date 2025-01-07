@@ -17,6 +17,16 @@ public class User {
     @NotNull(message = "Role is required")
     private Role role;
 
+    public User() {
+    }
+
+    public User(Long id, String username, String email, Role role) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }

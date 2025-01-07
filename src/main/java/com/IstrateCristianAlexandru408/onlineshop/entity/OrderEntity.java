@@ -3,6 +3,7 @@ package com.IstrateCristianAlexandru408.onlineshop.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class OrderEntity {
     private String status;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItemEntity> orderItems;
+    private List<OrderItemEntity> orderItems = new ArrayList<OrderItemEntity>();
 
     public Long getId() {
         return id;

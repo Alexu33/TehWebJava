@@ -21,6 +21,17 @@ public class Review {
     @NotNull(message = "Product ID is required")
     private Long productId;
 
+    public Review() {
+    }
+
+    public Review(Long id, String content, int rating, Long userId, Long productId) {
+        this.id = id;
+        this.content = content;
+        this.rating = rating;
+        this.userId = userId;
+        this.productId = productId;
+    }
+
     public Long getId() {
         return id;
     }

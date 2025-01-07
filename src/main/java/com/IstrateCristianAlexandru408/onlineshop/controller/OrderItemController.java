@@ -4,6 +4,7 @@ import com.IstrateCristianAlexandru408.onlineshop.dto.OrderItem;
 import com.IstrateCristianAlexandru408.onlineshop.service.OrderItemService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class OrderItemController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteOrderItem(@PathVariable Long id) {
         orderItemService.deleteOrderItem(id);
     }

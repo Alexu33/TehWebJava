@@ -17,6 +17,14 @@ public class UserCreation {
     @Size(min = 8, message = "Password must have at least 8 characters")
     private String password;
 
+    public UserCreation(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public UserCreation() {
+    }
 
     public String getUsername() {
         return username;

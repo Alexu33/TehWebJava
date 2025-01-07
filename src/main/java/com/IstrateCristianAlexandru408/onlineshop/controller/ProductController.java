@@ -4,6 +4,7 @@ import com.IstrateCristianAlexandru408.onlineshop.dto.Product;
 import com.IstrateCristianAlexandru408.onlineshop.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }

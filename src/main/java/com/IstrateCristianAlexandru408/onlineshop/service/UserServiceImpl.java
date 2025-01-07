@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         UserEntity userEntity = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(String.format(ErrorMessageUtils.USER_NOT_FOUND, id)));
+                .orElseThrow(() -> new UserNotFoundException(String.format(ErrorMessageUtils.USER_NOT_FOUND, id)));
 
         return UserMapper.getInstance().toDto(userEntity);
     }
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
 
-        UserEntity userEntity = userRepository.findById(user.getId()).orElseThrow(() -> new RuntimeException(String.format(ErrorMessageUtils.USER_NOT_FOUND, user.getId())));
+        UserEntity userEntity = userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFoundException(String.format(ErrorMessageUtils.USER_NOT_FOUND, user.getId())));
 
         if (!user.getUsername().equals(userEntity.getUsername())) {
             if (userRepository.existsByUsername(user.getUsername())) {
