@@ -1,11 +1,15 @@
 package com.IstrateCristianAlexandru408.onlineshop.mapper;
 
 import com.IstrateCristianAlexandru408.onlineshop.dto.Product;
+import com.IstrateCristianAlexandru408.onlineshop.entity.CategoryEntity;
 import com.IstrateCristianAlexandru408.onlineshop.entity.ProductEntity;
 
 public class ProductMapper {
     private static ProductMapper instance;
-    private ProductMapper() {}
+
+    private ProductMapper() {
+    }
+
     public static ProductMapper getInstance() {
         if (instance == null) {
             instance = new ProductMapper();
@@ -28,6 +32,10 @@ public class ProductMapper {
         productEntity.setName(product.getName());
         productEntity.setDescription(product.getDescription());
         productEntity.setPrice(product.getPrice());
+        productEntity.setStockQuantity(product.getStockQuantity());
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId(product.getCategoryId());
+        productEntity.setCategory(categoryEntity);
         return productEntity;
     }
 

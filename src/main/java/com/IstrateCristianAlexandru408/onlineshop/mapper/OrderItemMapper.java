@@ -1,7 +1,9 @@
 package com.IstrateCristianAlexandru408.onlineshop.mapper;
 
 import com.IstrateCristianAlexandru408.onlineshop.dto.OrderItem;
+import com.IstrateCristianAlexandru408.onlineshop.entity.OrderEntity;
 import com.IstrateCristianAlexandru408.onlineshop.entity.OrderItemEntity;
+import com.IstrateCristianAlexandru408.onlineshop.entity.ProductEntity;
 
 public class OrderItemMapper {
     private static OrderItemMapper instance;
@@ -18,6 +20,8 @@ public class OrderItemMapper {
         orderItem.setId(orderItemEntity.getId());
         orderItem.setQuantity(orderItemEntity.getQuantity());
         orderItem.setPrice(orderItemEntity.getPrice());
+        orderItem.setOrderId(orderItem.getOrderId());
+        orderItem.setProductId(orderItem.getProductId());
         return orderItem;
     }
 
@@ -26,6 +30,12 @@ public class OrderItemMapper {
         orderItemEntity.setId(orderItem.getId());
         orderItemEntity.setQuantity(orderItem.getQuantity());
         orderItemEntity.setPrice(orderItem.getPrice());
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setId(orderItem.getOrderId());
+        orderItemEntity.setOrder(orderEntity);
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setId(orderItem.getProductId());
+        orderItemEntity.setProduct(productEntity);
         return orderItemEntity;
     }
 
