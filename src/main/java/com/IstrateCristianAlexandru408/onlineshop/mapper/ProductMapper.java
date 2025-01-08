@@ -23,6 +23,8 @@ public class ProductMapper {
         product.setName(productEntity.getName());
         product.setDescription(productEntity.getDescription());
         product.setPrice(productEntity.getPrice());
+        product.setStockQuantity(productEntity.getStockQuantity());
+        product.setCategoryId(productEntity.getCategory().getId());
         return product;
     }
 

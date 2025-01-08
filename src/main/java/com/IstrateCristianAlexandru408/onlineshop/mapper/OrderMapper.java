@@ -2,6 +2,7 @@ package com.IstrateCristianAlexandru408.onlineshop.mapper;
 
 import com.IstrateCristianAlexandru408.onlineshop.dto.Order;
 import com.IstrateCristianAlexandru408.onlineshop.entity.OrderEntity;
+import com.IstrateCristianAlexandru408.onlineshop.entity.UserEntity;
 
 import java.util.stream.Collectors;
 
@@ -36,6 +37,14 @@ public class OrderMapper {
         orderEntity.setId(order.getId());
         orderEntity.setOrderDate(order.getOrderDate());
         orderEntity.setStatus(order.getStatus());
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(order.getUserId());
+        orderEntity.setUser(userEntity);
+        orderEntity.setOrderItems(
+                order.getOrderItems()
+                        .stream()
+                        .map(OrderItemMapper.getInstance()::toEntity)
+                        .collect(Collectors.toList()));
         return orderEntity;
     }
 
